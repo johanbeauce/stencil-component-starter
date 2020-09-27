@@ -21,6 +21,7 @@ export namespace Components {
         "middle": string;
     }
     interface SampleComponent {
+        "text": string;
     }
 }
 declare global {
@@ -57,6 +58,7 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface SampleComponent {
+        "text"?: string;
     }
     interface IntrinsicElements {
         "my-component": MyComponent;

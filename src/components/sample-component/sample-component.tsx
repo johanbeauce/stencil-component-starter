@@ -1,4 +1,4 @@
-import {Component, h} from "@stencil/core";
+import {Component, h, Prop} from "@stencil/core";
 
 @Component({
   tag: "sample-component",
@@ -7,10 +7,11 @@ import {Component, h} from "@stencil/core";
 })
 
 export class SampleComponent {
+  @Prop() text: string = "toto";
   render() {
     return (
       <div>
-        <h1>Sample Component</h1>
+        <h1>Hello {this.text}</h1>
       </div>
     );
   }
