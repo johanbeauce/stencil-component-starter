@@ -7,11 +7,11 @@ import {Component, h, Prop} from "@stencil/core";
 })
 
 export class SampleComponent {
-  @Prop() text: string = "toto";
+  @Prop() name: string
   render() {
     return (
       <div>
-        <h1>Hello {this.text}</h1>
+        <h1>Hello my name is {this.name}</h1>
       </div>
     );
   }

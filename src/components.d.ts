@@ -6,6 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface CustomClock {
+    }
     interface MyComponent {
         /**
           * The first name
@@ -20,16 +22,31 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface MySecondComponent {
+        "color": string;
+    }
     interface SampleComponent {
-        "text": string;
+        "name": string;
     }
 }
 declare global {
+    interface HTMLCustomClockElement extends Components.CustomClock, HTMLStencilElement {
+    }
+    var HTMLCustomClockElement: {
+        prototype: HTMLCustomClockElement;
+        new (): HTMLCustomClockElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
+    };
+    interface HTMLMySecondComponentElement extends Components.MySecondComponent, HTMLStencilElement {
+    }
+    var HTMLMySecondComponentElement: {
+        prototype: HTMLMySecondComponentElement;
+        new (): HTMLMySecondComponentElement;
     };
     interface HTMLSampleComponentElement extends Components.SampleComponent, HTMLStencilElement {
     }
@@ -38,11 +55,15 @@ declare global {
         new (): HTMLSampleComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "custom-clock": HTMLCustomClockElement;
         "my-component": HTMLMyComponentElement;
+        "my-second-component": HTMLMySecondComponentElement;
         "sample-component": HTMLSampleComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface CustomClock {
+    }
     interface MyComponent {
         /**
           * The first name
@@ -57,11 +78,16 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface MySecondComponent {
+        "color"?: string;
+    }
     interface SampleComponent {
-        "text"?: string;
+        "name"?: string;
     }
     interface IntrinsicElements {
+        "custom-clock": CustomClock;
         "my-component": MyComponent;
+        "my-second-component": MySecondComponent;
         "sample-component": SampleComponent;
     }
 }
@@ -69,7 +95,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "custom-clock": LocalJSX.CustomClock & JSXBase.HTMLAttributes<HTMLCustomClockElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "my-second-component": LocalJSX.MySecondComponent & JSXBase.HTMLAttributes<HTMLMySecondComponentElement>;
             "sample-component": LocalJSX.SampleComponent & JSXBase.HTMLAttributes<HTMLSampleComponentElement>;
         }
     }
